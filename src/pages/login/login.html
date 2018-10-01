@@ -1,0 +1,35 @@
+<ion-content text-center padding class="bg-image">
+  <img alt="logo" height="50" src="../assets/imgs/logo.png">
+  <ion-card>
+    <ion-card-header>
+
+      <h3>Insira seus dados</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input clearInput type="name" [(ngModel)]="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input clearInput type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="buttom">
+    <button ion-button full color="secondary" margin-right (click)="signIn()">
+      Entrar
+    </button>
+
+    <button ion-button full color="primary" (click)="signUp()">
+      Registrar-se
+    </button>
+    <button ion-button color="danger" class="senha" (click)="showMsg()">
+      Esqueceu a senha?</button>
+  </div>
+
+</ion-content>

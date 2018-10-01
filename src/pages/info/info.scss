@@ -1,0 +1,24 @@
+page-info {
+
+    .bg-image{
+        background-image: url('../assets/imgs/background-pages.png');
+        background-repeat: no-repeat;
+        background-position: 90%;
+        background-size: cover;
+        }
+
+    .sensor{
+        img{
+            max-width: 35%;
+            margin-top: 1em;
+            margin-left: 2.5em;
+            vertical-align: middle;
+        }
+        .info{
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 1.5em;
+            margin-left: 1.5em;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+page-login {
+    .bg-image{
+        background-image: url('../assets/imgs/background.png');
+        background-repeat: no-repeat;
+        background-position: cover;
+        background-size: cover;
+    }    
+    img{
+        text-align: center;
+        position: relative;
+        top: 20px; 
+    }
+    .scroll-content{
+        text-align: center;
+    }
+    h3{
+        position: relative;
+        top: 20px;
+    }
+    ion-card.card{
+        background: rgba(232, 230,230, 0.6px);
+        border-radius: 10px;
+        position: relative;
+        top: 45px;
+    }
+    .item{
+        background: rgba(232, 230,230, 0px);
+    }
+    ion-input{
+        border-bottom: rgb(41, 126, 255) solid 1px;
+
+    }
+    .buttom{
+        position: relative;
+        top: 80px;
+
+    }
+
+    .senha{
+        position: relative;
+        width: 200px;
+        top: 30px;
+    }
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <img alt="logo" width="140" src="../assets/icon/icon-sensor.png">
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-image">
+
+  <div class="sensor" >
+    <img src="assets/imgs/temp.png">
+     <div class="info">
+      <h1>temperatura</h1>
+      <br><button ion-button round outline (click)="temp()">Ver mais...</button>
+    </div>
+  </div>
+
+
+  <div class="sensor">
+    <img src="assets/imgs/umi.png">
+    <div class="info" *ngFor="let umidade of sensor_umi">
+      <p></p>
+      <h1>{{umidade}}</h1>
+      <br><button ion-button round outline (click)="umi()">Ver mais...</button>
+    </div>
+  </div>
+
+  <div class="sensor">
+    <img src="assets/imgs/light.png">
+    <div class="info" *ngFor="let luminosidade of sensor_lumi">
+      <p></p>
+      <h1>{{luminosidade}}</h1>
+      <br><button ion-button round outline (click)="light()">Ver mais...</button>
+    </div>
+  </div>
+
+</ion-content>
