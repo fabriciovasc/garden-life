@@ -58,12 +58,15 @@ export class TempPage {
       datasets: [{
         label: "Temperatura",
         data: data,
+        borderColor: "#129648",
+        fill: false
       }]
     };
 
     new Chart(ctx, {
       type: 'line',
       data: config,
+      
     });
   }
 }

@@ -1,15 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LightPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import Parse from 'parse';
+import Chart from 'chart.js'
 
 @IonicPage({
-  // defaultHistory: ["InfoPage"]
+  defaultHistory: ['InfoPage']
 })
 @Component({
   selector: 'page-light',
@@ -17,11 +12,62 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LightPage {
 
+  @ViewChild("canvas") canvas;
+  data = [];
+  interval;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LightPage');
+  ionViewWillUnload(){
+    clearInterval(this.interval);
+
   }
 
+  ionViewDidLoad() {
+    this.getData();
+    this.interval = setInterval(() => {
+      this.getData();
+    }, 30 * 1000)
+  }
+
+  getData() {
+    const query = new Parse.Query('sensor');
+    query.limit(5);
+    query.descending("createdAt");
+    query.equalTo("topico", "luminosidade");
+
+    query.find().then((data) => {
+      console.log(data);
+      this.data = data;
+      this.generateGraph();
+    })
+  }
+
+  generateGraph() {
+    const ctx = (<HTMLCanvasElement>document.getElementById("canvas")).getContext("2d");
+
+    const data = this.data.map(el => el.get("valor"))
+    const labels = this.data.map(el => {
+      const date = new Date(el.get("createdAt"))
+      return date.getHours() + ":" + date.getMinutes()
+    })
+
+    const config = {
+      labels: labels,
+      datasets: [{
+        label: "Luminosidade",
+        data: data,
+        borderColor: "#129648",
+        fill: false
+      }]
+    };
+
+    new Chart(ctx, {
+      type: 'line',
+      data: config,
+      
+    });
+  }
 }
+
