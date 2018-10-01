@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import Parse from 'parse';
 
 @IonicPage()
 @Component({
@@ -8,8 +7,6 @@ import Parse from 'parse';
   templateUrl: 'umi.html',
 })
 export class UmiPage {
-
-  sensores: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 

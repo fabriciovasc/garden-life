@@ -1,0 +1,21 @@
+page-temp {
+    .bg-image{
+        background-image: url('../assets/imgs/background-pages.png');
+        background-repeat: no-repeat;
+        background-position: 90%;
+        background-size: cover;
+        }
+        .ios, .md {
+  
+         
+    .scroll-content {
+         background-color: map-get($colors, light);
+        } 
+         
+    ion-card-header {
+        
+        font-weight: bold;
+        }
+    }
+         
+}
