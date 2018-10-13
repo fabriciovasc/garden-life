@@ -3,10 +3,6 @@ import { Nav, Platform, App, MenuController, AlertController } from 'ionic-angul
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import Parse from 'parse';
-import { InfoPage } from '../pages/info/info';
-import { AboutPage } from '../pages/about/about';
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,9 +19,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Bem-vindo', component: HomePage },
-      { title: 'Informações gerais', component: InfoPage },
-      { title: 'Sobre nós', component: AboutPage }
+      { title: 'Bem-vindo', component: "HomePage" },
+      { title: 'Sensores', component: "InfoPage" },
+      { title: 'Sobre nós', component: "AboutPage" }
     ];
 
   }
@@ -64,7 +60,7 @@ export class MyApp {
   logoutClicked() {
     console.log("Sair");
     this.menuCtrl.close();
-    this.nav.setRoot(LoginPage);
+    this.nav.setRoot("LoginPage");
   }
 }
 

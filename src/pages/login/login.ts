@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, ToastController } from 'ionic-angular';
 import Parse from 'parse';
-import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -47,7 +46,7 @@ export class LoginPage {
       console.log('Logado com sucesso', resp);
 
       // If you app has Tabs, set root to TabsPage
-      this.navCtrl.setRoot(HomePage)
+      this.navCtrl.setRoot("HomePage")
     }, err => {
       console.log('Erro ao logar', err);
 

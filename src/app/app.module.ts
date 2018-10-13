@@ -4,14 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
-import { InfoPage } from '../pages/info/info';
 import { MqttModule, MqttService, IMqttServiceOptions } from 'ngx-mqtt';
 import { HttpClientModule } from '@angular/common/http'
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: '192.168.0.167',
+  hostname: '192.168.0.79',
   port: 9001,
   //protocol: " ",
   //username: " ",
@@ -25,10 +22,7 @@ export function mqttServiceFactory() {
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    AboutPage,
-    InfoPage,
+    MyApp
 
   ],
   imports: [
@@ -38,14 +32,11 @@ export function mqttServiceFactory() {
     MqttModule.forRoot({
       provide: MqttService,
       useFactory: mqttServiceFactory
-    })
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    AboutPage,
-    InfoPage,
+    MyApp
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle color="secondary">
       <ion-icon name="menu"></ion-icon>
     </button>
     <img alt="logo" width="140" src="../assets/icon/icon-sensor.png">
@@ -9,31 +9,63 @@
 
 <ion-content padding class="bg-image">
 
-  <div class="sensor" >
-    <img src="assets/imgs/temp.png">
-     <div class="info">
-      <h1>temperatura</h1>
-      <br><button ion-button round outline (click)="temp()">Ver mais...</button>
-    </div>
-  </div>
+  <ion-card class="card-temp" (click)="temp()">
+    <ion-card-content>
 
+      <div class="sensor-temp">
 
-  <div class="sensor">
-    <img src="assets/imgs/umi.png">
-    <div class="info" *ngFor="let umidade of sensor_umi">
-      <p></p>
-      <h1>{{umidade}}</h1>
-      <br><button ion-button round outline (click)="umi()">Ver mais...</button>
-    </div>
-  </div>
+        <div class="temperatura" ngFor="sensor_temp">
+          <h1><b>{{sensor_temp}}°C</b></h1>
+        </div>
 
-  <div class="sensor">
-    <img src="assets/imgs/light.png">
-    <div class="info" *ngFor="let luminosidade of sensor_lumi">
-      <p></p>
-      <h1>{{luminosidade}}</h1>
-      <br><button ion-button round outline (click)="light()">Ver mais...</button>
-    </div>
-  </div>
+        <div class="porcent" ngFor="sensor_temp">
+          <round-progress [current]="sensor_temp" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+            [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_temp"
+            [background]="background_temp" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+          </round-progress>
+        </div>
 
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-umi" (click)="umi()">
+    <ion-card-content>
+
+      <div class="sensor-umi">
+
+        <div class="umidade" ngFor="sensor_umi">
+          <h1><b>{{sensor_umi}}% </b></h1>
+        </div>
+
+        <div class="porcent" ngFor="sensor_umi">
+          <round-progress [current]="sensor_umi" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+            [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_umi"
+            [background]="background_umi" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+          </round-progress>
+        </div>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-light" (click)="light()">
+    <ion-card-content>
+
+      <div class="sensor-light">
+
+        <div class="light" ngFor="sensor_light">
+          <h1><b>{{sensor_light}}</b></h1>
+        </div>
+
+        <div class="porcent" ngFor="sensor_light">
+          <round-progress [current]="sensor_light" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+            [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_light"
+            [background]="background_light" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+          </round-progress>
+        </div>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

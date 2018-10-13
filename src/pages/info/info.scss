@@ -22,3 +22,61 @@ page-info {
         }
     }
 }
+
+        .temperatura{
+        position: absolute;
+        left: 63px;
+        top: 73px;
+        font-size: 25px;
+
+    }
+    .card-temp{
+        background: rgba(232, 230,230, 0.6px);
+        border-radius: 10px;
+        max-width: 170px;
+        left: -9px;
+        top: -8px;
+        height: 170px;
+        margin: 0 !important;
+        position: relative;
+
+    }
+
+        .umidade{
+            position: absolute;
+            left: 65px;
+            top: 73px;
+            font-size: 25px;
+
+    }
+
+    .card-umi{
+        background: rgba(232, 230,230, 0.6px);
+        border-radius: 10px;
+        max-width: 170px;
+        left: 158px;
+        top: -178px;
+        height: 170px;
+        position: relative;
+        
+    }
+
+        .light{
+            position: absolute;
+            left: 73px;
+            top: 73px;
+            font-size: 25px;
+
+    }
+    .card-light{
+    background: rgba(232, 230,230, 0.6px);
+    border-radius: 10px;
+    max-width: 170px;
+    height: 170px;
+    position: absolute;
+    top: 185px;
+    left: -3px;
+        
+    }
+
+

@@ -2,15 +2,20 @@
   <ion-header>
     <ion-toolbar>
       <img alt="logo" width="140" src="../assets/icon/icon-menu.png">
+      <div class="icon-exit">
+        <ion-icon name="exit" color="secondary" (click)="showAlert()" (click)="logoutClicked()"></ion-icon>
+      </div>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        <div class="font-menu">{{p.title}}</div>
+        <div class="icon-open">
+          <ion-icon name="arrow-round-forward" color="secondary"></ion-icon>
+        </div>
       </button>
-      <button ion-item color="danger" (click)="showAlert()" (click)="logoutClicked()"  >Sair</button>
     </ion-list>
   </ion-content>
 

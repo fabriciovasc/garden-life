@@ -13,4 +13,23 @@
 //
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+// automatically applied to the <body> element in the app..
+
+.icon-exit{
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    left: 270px;
+}
+
+.icon-open{
+    position: absolute;
+    left: 250px;
+    top: 10px;
+    font-size: 20px;
+}
+.font-menu{
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+}

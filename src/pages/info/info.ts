@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MqttService, IMqttMessage } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
 
+
 @IonicPage()
 @Component({
   selector: 'page-info',
@@ -11,13 +12,35 @@ import { Subscription } from 'rxjs';
 })
 export class InfoPage {
 
+  //Test
+  max: number = 100;
+  stroke: number = 10;
+  radius: number = 70;
+  semicircle: boolean = false;
+  rounded: boolean = false;
+  responsive: boolean = false;
+  clockwise: boolean = true;
+  color_temp: string = '#ffc62b';
+  background_temp: string = '#e5e3e3';
+  color_umi: string = '#129648';
+  background_umi: string = '#e5e3e3';
+  color_light: string = '#488aff';
+  background_light: string = '#d6d4d4';
+  duration: number = 900;
+  animation: string = 'easeInCubic';
+  animationDelay: number = 0;
+  animations: string[] = [];
+  gradient: boolean = false;
+  realCurrent: number = 0;
+  rate: number;
+
   message: string = "";
   topic: string = ""; //Linha comentada, pois o tópico será lido direto do broker
   author: string = "app : ";
   publishM: string = "";
   sensor_temp = [];
   sensor_umi = [];
-  sensor_lumi = [];
+  sensor_light = [];
   
 
   private subs: Subscription;
@@ -47,13 +70,15 @@ export class InfoPage {
     //MQTT Subscribe for luminosidade
     this.subs = this.mqttService.observe('home/luminosidade').subscribe((message: IMqttMessage) => {
       console.log(message);
-      this.sensor_lumi = [];
+      this.sensor_light = [];
       this.message = message.payload.toString();
-      this.sensor_lumi.push(this.message);
+      this.sensor_light.push(this.message);
 
     });
 
   }
+
+
 
   public unsubscribe() {
     console.log("unsubscribe");
