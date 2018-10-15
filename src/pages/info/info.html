@@ -9,63 +9,92 @@
 
 <ion-content padding class="bg-image">
 
-  <ion-card class="card-temp" (click)="temp()">
-    <ion-card-content>
+  <div class="card-temp">
+    <ion-card>
 
-      <div class="sensor-temp">
+      <ion-card-content>
 
-        <div class="temperatura" ngFor="sensor_temp">
-          <h1><b>{{sensor_temp}}°C</b></h1>
-        </div>
-
-        <div class="porcent" ngFor="sensor_temp">
+        <div class="progress-temp">
           <round-progress [current]="sensor_temp" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
             [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_temp"
             [background]="background_temp" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
           </round-progress>
         </div>
 
-      </div>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="card-umi" (click)="umi()">
-    <ion-card-content>
-
-      <div class="sensor-umi">
-
-        <div class="umidade" ngFor="sensor_umi">
-          <h1><b>{{sensor_umi}}% </b></h1>
+        <div class="name-temp">
+          <img alt="temp" src="../assets/icon/name-temp.png">
         </div>
 
-        <div class="porcent" ngFor="sensor_umi">
+        <div class="temp" ngFor="sensor_temp">
+          <p style="font-family: Arial" style="font-size: 20px" color="yellow">{{sensor_temp}}°C</p>
+        </div>
+
+        <div class="more-temp">
+          <ion-icon (click)="temp()" name="more" color="dark" style="font-size: 25px" click></ion-icon>
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div class="card-umi">
+    <ion-card>
+
+      <ion-card-content>
+
+        <div class="progress-umi">
           <round-progress [current]="sensor_umi" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
             [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_umi"
-            [background]="background_umi" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+            [background]="background_temp" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
           </round-progress>
         </div>
 
-      </div>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="card-light" (click)="light()">
-    <ion-card-content>
-
-      <div class="sensor-light">
-
-        <div class="light" ngFor="sensor_light">
-          <h1><b>{{sensor_light}}</b></h1>
+        <div class="name-umi">
+          <img alt="temp" src="../assets/icon/name-umi.png">
         </div>
 
-        <div class="porcent" ngFor="sensor_light">
+        <div class="umi" ngFor="sensor_umi">
+          <p style="font-family: Arial" style="font-size: 20px" color="primary">{{sensor_umi}}%</p>
+        </div>
+
+        <div class="more-umi">
+          <ion-icon (click)="umi()" name="more" color="dark" style="font-size: 25px"></ion-icon>
+        </div>
+        
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div class="card-light">
+    <ion-card>
+
+      <ion-card-content>
+
+        <div class="progress-light">
           <round-progress [current]="sensor_light" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
             [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color_light"
-            [background]="background_light" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+            [background]="background_temp" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
           </round-progress>
         </div>
 
-      </div>
-    </ion-card-content>
-  </ion-card>
+        <div class="name-light">
+          <img alt="temp" src="../assets/icon/name-light.png">
+        </div>
+
+        <div class="light" ngFor="sensor_light">
+          <p style="font-family: Arial" style="font-size: 20px">{{sensor_temp}}°C</p>
+        </div>
+
+        <div class="more-light">
+          <ion-icon (click)="light()" name="more" color="dark" style="font-size: 25px"></ion-icon>
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
 </ion-content>

@@ -20,7 +20,7 @@ export class InfoPage {
   rounded: boolean = false;
   responsive: boolean = false;
   clockwise: boolean = true;
-  color_temp: string = '#ffc62b';
+  color_temp: string = '#ffcc00';
   background_temp: string = '#e5e3e3';
   color_umi: string = '#129648';
   background_umi: string = '#e5e3e3';
@@ -38,9 +38,9 @@ export class InfoPage {
   topic: string = ""; //Linha comentada, pois o tópico será lido direto do broker
   author: string = "app : ";
   publishM: string = "";
-  sensor_temp = [];
-  sensor_umi = [];
-  sensor_light = [];
+  sensor_temp = 30;
+  sensor_umi = 40;
+  sensor_light = 10;
   
 
   private subs: Subscription;
