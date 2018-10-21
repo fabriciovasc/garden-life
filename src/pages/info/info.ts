@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { MqttService, IMqttMessage } from 'ngx-mqtt';
-import { Subscription } from 'rxjs';
-
+import Parse from 'parse';
 
 @IonicPage()
 @Component({
@@ -12,7 +9,8 @@ import { Subscription } from 'rxjs';
 })
 export class InfoPage {
 
-  //Test
+  //Manipulação de dados
+
   max: number = 100;
   stroke: number = 10;
   radius: number = 70;
@@ -34,61 +32,82 @@ export class InfoPage {
   realCurrent: number = 0;
   rate: number;
 
-  message: string = "";
-  topic: string = ""; //Linha comentada, pois o tópico será lido direto do broker
-  author: string = "app : ";
-  publishM: string = "";
-  sensor_temp = 30;
-  sensor_umi = 40;
-  sensor_light = 10;
-  
+  //Dados dos sensores
 
-  private subs: Subscription;
-  clear: any;
+  sensor_temp = [];
+  sensor_umi = [];
+  sensor_light = [];
+  interval;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mqttService: MqttService) {
-    console.log(this.mqttService);
 
-    //MQTT Subscribe for temperatura
-    this.subs = this.mqttService.observe('home/temperatura').subscribe((message: IMqttMessage) => {
-      console.log(message);
-      this.sensor_temp = [];
-      this.message = message.payload.toString();
-      this.sensor_temp.push(this.message);
-
-    });
-
-    //MQTT Subscribe for umidade
-    this.subs = this.mqttService.observe('home/umidade').subscribe((message: IMqttMessage) => {
-      console.log(message);
-      this.sensor_umi = [];
-      this.message = message.payload.toString();
-      this.sensor_umi.push(this.message);
-
-    });
-
-    //MQTT Subscribe for luminosidade
-    this.subs = this.mqttService.observe('home/luminosidade').subscribe((message: IMqttMessage) => {
-      console.log(message);
-      this.sensor_light = [];
-      this.message = message.payload.toString();
-      this.sensor_light.push(this.message);
-
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
-
-
-  public unsubscribe() {
-    console.log("unsubscribe");
-    this.subs.unsubscribe();
-  }
-
+//Intervalos de tempo para obter os valores dos sensores no banco de dados
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InfoPage');
+    this.getDataTemp();
+    this.interval = setInterval(() => {
+      this.getDataTemp();
+    }, 10 * 1000)
+
+    this.getDataUmi();
+    this.interval = setInterval(() => {
+      this.getDataUmi();
+    }, 10 * 1000)
+
+    this.getDataLight();
+    this.interval = setInterval(() => {
+      this.getDataLight();
+    }, 10 * 1000)
   }
+
+//Extrair valores do sensor_temperatura do banco de dados
+
+  getDataTemp() {
+    const query = new Parse.Query('sensor');
+    query.limit(1);
+    query.descending("createdAt");
+    query.equalTo("topico", "temperatura");
+
+    query.find().then((message) => {
+      console.log(message);
+      this.sensor_temp = message[0].get('valor');
+
+    })
+  }
+
+//Extrair valores do sensor_umidade do banco de dados
+
+  getDataUmi() {
+    const query = new Parse.Query('sensor');
+    query.limit(1);
+    query.descending("createdAt");
+    query.equalTo("topico", "umidade");
+
+    query.find().then((message) => {
+      console.log(message);
+      this.sensor_umi = message[0].get('valor');
+      
+    })
+  }
+
+//Extrair valores do sensor_luminosidade do banco de dados
+
+  getDataLight() {
+    const query = new Parse.Query('sensor');
+    query.limit(1);
+    query.descending("createdAt");
+    query.equalTo("topico", "luminosidade");
+
+    query.find().then((message) => {
+      console.log(message);
+      this.sensor_light = message[0].get('valor');
+      
+    })
+  }
+
+//Puxar a página de gráficos de cada temperatura
 
   temp() {
     this.navCtrl.push("TempPage");

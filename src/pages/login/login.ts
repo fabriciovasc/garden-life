@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, ToastController } from 'ionic-angular';
 import Parse from 'parse';
+import { Network } from '@ionic-native/network'
 
 @IonicPage()
 @Component({
@@ -15,9 +16,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
-  ) {
-
-  }
+    private network: Network
+  ) {}
 
   signUp() {
     Parse.User.signUp(this.username, this.password).then(resp => {

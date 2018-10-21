@@ -33,7 +33,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      //Parse Server Settings
+      //Configurações do servidor do banco de dados
       Parse.initialize("Q68CJmlbatARZBuNm64zHlbQVxPBrXGCv6Wqbloh", "YPKUxtkmZtluu7OETQWzMtsxGtRqENfXcN8EwRqH");
       Parse.serverURL = 'https://parseapi.back4app.com/';
 
