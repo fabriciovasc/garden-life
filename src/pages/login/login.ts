@@ -44,7 +44,7 @@ export class LoginPage {
       console.log('Logado com sucesso', resp);
 
       // If you app has Tabs, set root to TabsPage
-      this.navCtrl.setRoot("HomePage")
+      this.navCtrl.setRoot("InfoPage")
     }, err => {
       console.log('Erro ao logar', err);
 
